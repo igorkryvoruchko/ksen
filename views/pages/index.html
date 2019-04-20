@@ -1,0 +1,3 @@
+This is the pages/index.html
+<br/>
+<?=$data['test_content']?>
