@@ -16,3 +16,9 @@ Config::set('default_language', 'en');
 Config::set('default_controller', 'pages');
 
 Config::set('default_action', 'index');
+
+//DataBase
+Config::set('db.host', 'mysql:3306');
+Config::set('db.user', 'root');
+Config::set('db.password', 'tiger');
+Config::set('db.db_name', 'mvc');
