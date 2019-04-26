@@ -1,5 +1,5 @@
 body {
-    padding-top: 50px;
+    padding-top: 70px;
 }
 
 .starter-template {
@@ -7,6 +7,11 @@ body {
 }
 
 form {
+    width: 400px;
+    max-width: 400px;
+}
+
+.alert {
     width: 400px;
     max-width: 400px;
 }
