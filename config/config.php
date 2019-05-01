@@ -22,3 +22,5 @@ Config::set('db.host', 'mysql:3306');
 Config::set('db.user', 'root');
 Config::set('db.password', 'tiger');
 Config::set('db.db_name', 'mvc');
+
+Config::set('salt', 'jd7sj3sdkd964he7e');

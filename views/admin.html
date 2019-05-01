@@ -32,12 +32,16 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <?php if (Session::get('login')) {?>
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link <?php if( App::getRouter()->getController() == 'pages' ){?>active<?}?>" href="/admin/pages/">Pages</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link <?php if( App::getRouter()->getController() == 'contacts' ){?>active<?}?>" href="/admin/contacts/">Contact Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/users/logout/">Logout</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -51,6 +55,7 @@
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
         </form>
+        <?php } ?>
     </div>
 </nav>
 
