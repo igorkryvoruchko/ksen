@@ -8,8 +8,14 @@ require_once (ROOT.DS.'lib'.DS.'init.php');
 
 $router = new Router($_SERVER['REQUEST_URI']);
 
-session_start();
+$redis = new Redis();
+$redis->connect('redis', 6379);
+$redis->set('name', 'Ksena');
 
+$name = $redis->get('name');
+//
+session_start();
+echo $name;
 App::run($_SERVER['REQUEST_URI']);
 
 
