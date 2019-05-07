@@ -24,3 +24,5 @@ Config::set('db.password', 'tiger');
 Config::set('db.db_name', 'mvc');
 
 Config::set('salt', 'jd7sj3sdkd964he7e');
+
+Config::set('redis_host', 'redis');

@@ -67,4 +67,25 @@ class Page extends Model
         $sql = "delete from pages where id = {$id}";
         return $this->db->query($sql);
     }
+
+    public function getMutchViews($alias)
+    {
+        $redis = new Redis();
+        $redis->connect('redis', 6379);
+        $views = $redis->get($alias);
+        if ( empty($views) ){
+            $redis->set($alias, 1);
+            return 1;
+        } else {
+            return $views;
+        }
+    }
+
+    public function setMutchViews($alias, $views)
+    {
+        $views = $views + 1;
+        $redis = new Redis();
+        $redis->connect('redis', 6379);
+        $redis->set($alias, $views);
+    }
 }

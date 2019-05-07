@@ -21,6 +21,9 @@ class PagesController extends Controller
         if ( isset( $params[0] ) ){
             $alias = strtolower($params[0]);
             $this->data['page'] = $this->model->getByAlias($alias);
+            $views = $this->model->getMutchViews($alias);
+            $this->data['page']['redis'] = $views;
+            $this->model->setMutchViews($alias, $views);
         }
     }
 
