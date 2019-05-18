@@ -28,7 +28,7 @@ class Page extends Model
         return isset($result[0]) ? $result[0] : null;
     }
 
-    public function save($data, $id = null)
+    public function save($data, $img, $id = null)
     {
         if( !isset($data['alias']) || !isset($data['title']) || !isset($data['content']) ){
             return false;
@@ -39,6 +39,12 @@ class Page extends Model
         $title = $this->db->escape($data['title']);
         $content = $this->db->escape($data['content']);
         $is_published = isset($data['is_published']) ? 1 : 0;
+        if ($img){
+            $imgName = $img['image']['name'];
+            copy($img['image']['tmp_name'], ROOT.'/webroot/img/'. $imgName);
+        }else{
+            $imgName = null;
+        }
 
         if( !$id ){
             $sql = "
@@ -46,7 +52,8 @@ class Page extends Model
                     set alias = '{$alias}',
                         title = '{$title}',
                         content = '{$content}',
-                        is_published = '{$is_published}'
+                        is_published = '{$is_published}',
+                        image = '{$imgName}'
            ";
         } else {
             $sql = "
@@ -54,7 +61,8 @@ class Page extends Model
                     set alias = '{$alias}',
                         title = '{$title}',
                         content = '{$content}',
-                        is_published = '{$is_published}'
+                        is_published = '{$is_published}',
+                        image = '{$imgName}'
                     where id = '{$id}'
            ";
         }

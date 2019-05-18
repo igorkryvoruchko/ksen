@@ -35,7 +35,7 @@ class PagesController extends Controller
     public function admin_add()
     {
         if ( $_POST ){
-            $result = $this->model->save($_POST);
+            $result = $this->model->save($_POST, $_FILES);
             if ( $result ){
                 Session::setFlash("Page was saved!");
             } else {
@@ -49,7 +49,7 @@ class PagesController extends Controller
     {
         if ( $_POST ){
             $id = isset($_POST['id']) ? $_POST['id'] : null;
-            $result = $this->model->save($_POST, $id);
+            $result = $this->model->save($_POST, $_FILES, $id);
             if ( $result ){
                 Session::setFlash("Page was saved!");
             } else {
