@@ -80,6 +80,7 @@ class Page extends Model
     public function delete($id)
     {
         $id = (int)$id;
+        unlink(ROOT.'/webroot/img/'.self::getImage($id));
         $sql = "delete from pages where id = {$id}";
         return $this->db->query($sql);
     }
