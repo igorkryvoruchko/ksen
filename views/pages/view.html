@@ -4,5 +4,6 @@
 
 <p><?=$data['page']['content']?></p>
 
+<?php if( $data['page']['image'] ){ ?>
 <img src="<?php echo '/img/'.$data['page']['image'] ?>" width="200" height="200">
-
+<?php } ?>
