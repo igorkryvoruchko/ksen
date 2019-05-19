@@ -40,6 +40,7 @@ class Page extends Model
         $content = $this->db->escape($data['content']);
         $is_published = isset($data['is_published']) ? 1 : 0;
         if ($img){
+            unlink(ROOT.'/webroot/img/'.self::getImage($id));
             $imgName = $img['image']['name'];
             copy($img['image']['tmp_name'], ROOT.'/webroot/img/'. $imgName);
         }else{
@@ -67,6 +68,13 @@ class Page extends Model
            ";
         }
         return $this->db->query($sql);
+    }
+
+    public function getImage($id)
+    {
+        $sql = "select image from pages where id = '{$id}'";
+        $result = $this->db->query($sql);
+        return $result[0]['image'];
     }
 
     public function delete($id)
