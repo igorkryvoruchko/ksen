@@ -20,5 +20,9 @@
         <label for="password">Password</label>
         <input type="password" id="password" name="password" class="form-control">
     </div>
-    <input type="submit" class="btn btn-success">
+    <div class="form-group" >
+            <label for="check_password"> Check Password</label>
+            <input type="password" id="check_password" name="check_password" class="form-control" onkeyup="checkPassword()">
+        </div>
+    <input type="submit" id="button_submit" class="btn btn-success" value="Submit" style="display: none">
 </form>
