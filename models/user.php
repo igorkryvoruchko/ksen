@@ -12,4 +12,19 @@ class User extends Model
         }
         return false;
     }
+
+    public function registerUser($user)
+    {
+        $password = password_hash($user['password'], PASSWORD_DEFAULT);
+        $sql ="insert into users
+                    set email = '{$user['email']}',
+                        login = '{$user['login']}',
+                        password = '{$password}',
+                        is_active = 1,
+                        role = 'author',
+                        first_name = '{$user['first_name']}',
+                        second_name = '{$user['second_name']}'
+               ";
+         return $this->db->query($sql);
+    }
 }

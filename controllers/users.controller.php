@@ -26,4 +26,16 @@ class UsersController extends Controller
         Session::destroy();
         Router::redirect('/admin/');
     }
+
+    public function register()
+    {
+        if ($_POST && isset($_POST['first_name']) && isset($_POST['second_name']) && isset($_POST['email']) && isset($_POST['login']) && isset($_POST['password'])){
+            $this->model->registerUser($_POST);
+        }
+    }
+
+    public function login()
+    {
+
+    }
 }
